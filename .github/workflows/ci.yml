@@ -24,6 +24,24 @@ jobs:
           cache: pip
       - name: Install project
         run: python -m pip install --upgrade pip ".[dev]"
+      - name: Validate macOS and Linux setup script
+        if: runner.os != 'Windows'
+        run: bash -n scripts/setup-macos.sh
+      - name: Validate Windows setup script
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $parseErrors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile(
+            (Resolve-Path "scripts/setup-windows.ps1"),
+            [ref]$tokens,
+            [ref]$parseErrors
+          ) | Out-Null
+          if ($parseErrors.Count -gt 0) {
+            $parseErrors | ForEach-Object { Write-Error $_ }
+            exit 1
+          }
       - name: Lint
         run: ruff check .
       - name: Test
