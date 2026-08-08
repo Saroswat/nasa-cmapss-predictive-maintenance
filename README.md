@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/Saroswat/nasa-cmapss-predictive-maintenance/actions/workflows/ci.yml/badge.svg)](https://github.com/Saroswat/nasa-cmapss-predictive-maintenance/actions/workflows/ci.yml)
 
+![C-MAPSS fleet intelligence](web/public/og.png)
+
 A reproducible remaining-useful-life (RUL) and cost-aware maintenance workflow for NASA's C-MAPSS FD001 turbofan benchmark. This is a modernized continuation of my B.Tech eighth-semester project.
 
 ## What this project does
@@ -13,6 +15,7 @@ A reproducible remaining-useful-life (RUL) and cost-aware maintenance workflow f
 - Compares Random Forest and histogram gradient boosting regressors using NASA's asymmetric score.
 - Learns a maintenance-risk classifier and selects its decision threshold from an explicit cost matrix.
 - Produces predictions, metrics, trained models, and publication-ready plots.
+- Presents verified fleet risk, maintenance queues, and model health in a responsive web dashboard.
 - Runs on macOS, Windows, and Linux with Python 3.11 or newer.
 
 ## Quick start
@@ -29,7 +32,7 @@ curl -fsSL https://raw.githubusercontent.com/Saroswat/nasa-cmapss-predictive-mai
 irm https://raw.githubusercontent.com/Saroswat/nasa-cmapss-predictive-maintenance/main/scripts/setup-windows.ps1 | iex
 ```
 
-Both setup scripts clone this repository, install [uv](https://docs.astral.sh/uv/) when needed, create an isolated Python environment, install the project, and download the dataset.
+Both setup scripts clone this repository, install [uv](https://docs.astral.sh/uv/) when needed, create an isolated Python environment, install the Python and Node.js dependencies, and download the dataset. The dashboard requires Node.js 22.13 or newer.
 
 Run the complete experiment:
 
@@ -43,6 +46,14 @@ Open the modern notebook:
 uv run jupyter lab notebooks/01_modern_predictive_maintenance.ipynb
 ```
 
+Launch the fleet dashboard:
+
+```bash
+npm --prefix web run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000). The committed dashboard snapshot contains the verified FD001 results, so it works immediately after setup.
+
 ## Repository layout
 
 ```text
@@ -52,7 +63,8 @@ uv run jupyter lab notebooks/01_modern_predictive_maintenance.ipynb
 │   ├── 01_modern_predictive_maintenance.ipynb
 │   └── archive/                  Original eighth-semester notebook
 ├── tests/                        Fast unit and synthetic end-to-end tests
-├── scripts/                      Windows and macOS setup scripts
+├── scripts/                      Setup scripts and dashboard data exporter
+├── web/                          Responsive fleet intelligence dashboard
 ├── .github/workflows/ci.yml      Cross-platform lint and test matrix
 └── artifacts/                    Generated locally and excluded from Git
 ```
@@ -99,9 +111,17 @@ uv run cmapss-maintenance run
 # Faster development run
 uv run cmapss-maintenance run --estimators 50
 
+# Refresh the web dashboard from the latest trained artifacts
+uv run python scripts/export_dashboard_data.py
+
+# Run the web dashboard
+npm --prefix web run dev
+
 # Quality checks
 uv run ruff check .
 uv run pytest --cov=cmapss_maintenance
+npm --prefix web run lint
+npm --prefix web test
 ```
 
 Generated files appear in `artifacts/`:

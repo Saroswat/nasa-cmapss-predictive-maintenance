@@ -11,6 +11,10 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
     throw "Git is required. Install Git for Windows from https://git-scm.com/download/win"
 }
 
+if (-not (Get-Command npm -ErrorAction SilentlyContinue)) {
+    throw "Node.js 22.13 or newer is required for the web dashboard. Install it from https://nodejs.org"
+}
+
 $uvCommand = Get-Command uv -ErrorAction SilentlyContinue
 if (-not $uvCommand) {
     Write-Host "Installing uv..."
@@ -40,6 +44,7 @@ Push-Location $InstallDirectory
 try {
     & $uvPath sync --extra notebook --extra dev
     & $uvPath run cmapss-maintenance download
+    npm --prefix web ci
 } finally {
     Pop-Location
 }
@@ -48,3 +53,4 @@ Write-Host ""
 Write-Host "Setup complete: $InstallDirectory" -ForegroundColor Green
 Write-Host "Run the project: cd `"$InstallDirectory`"; uv run cmapss-maintenance run"
 Write-Host "Open the notebook: uv run jupyter lab notebooks/01_modern_predictive_maintenance.ipynb"
+Write-Host "Open the dashboard: npm --prefix web run dev"
