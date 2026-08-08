@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cmapss-predictive-maintenance"
+version = "1.0.0"
+description = "Reproducible remaining-useful-life modelling and cost-aware maintenance decisions for NASA C-MAPSS."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Saroswat Roy", email = "saroswatroy@gmail.com" }]
+dependencies = [
+  "joblib>=1.4,<2",
+  "matplotlib>=3.9,<4",
+  "numpy>=2.0,<3",
+  "pandas>=2.2,<4",
+  "scikit-learn>=1.6,<2",
+  "seaborn>=0.13,<1",
+]
+
+[project.optional-dependencies]
+notebook = [
+  "ipykernel>=6.29,<8",
+  "jupyterlab>=4.3,<5",
+  "nbclient>=0.10,<1",
+  "nbformat>=5.10,<6",
+]
+dev = [
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "ruff>=0.9,<1",
+]
+
+[project.scripts]
+cmapss-maintenance = "cmapss_maintenance.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cmapss_maintenance"]
+
+[tool.pytest.ini_options]
+addopts = "-q --disable-warnings"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["notebooks/archive"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
