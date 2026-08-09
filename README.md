@@ -65,6 +65,16 @@ Open the modern notebook:
 uv run jupyter lab notebooks/01_modern_predictive_maintenance.ipynb
 ```
 
+Run the standalone cross-platform notebook in VS Code, Jupyter, or Colab:
+
+[![Open portable notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Saroswat/nasa-cmapss-predictive-maintenance/blob/main/notebooks/02_portable_end_to_end_cmapss.ipynb)
+
+```bash
+uv run jupyter lab notebooks/02_portable_end_to_end_cmapss.ipynb
+```
+
+The portable notebook contains its own dependency bootstrap, verified dataset downloader, feature engineering, model selection, evaluation, plots, artifact serialization, and dashboard-data export. It is designed for Apple Silicon, Windows systems with or without NVIDIA GPUs, and the Google Colab free CPU tier.
+
 Launch the fleet dashboard:
 
 ```bash
@@ -80,6 +90,7 @@ Then open [http://localhost:3000](http://localhost:3000). The committed dashboar
 ├── src/cmapss_maintenance/       Tested data, feature, model, metric, and reporting code
 ├── notebooks/
 │   ├── 01_modern_predictive_maintenance.ipynb
+│   ├── 02_portable_end_to_end_cmapss.ipynb
 │   └── archive/                  Original eighth-semester notebook
 ├── tests/                        Fast unit and synthetic end-to-end tests
 ├── scripts/                      Setup scripts and dashboard data exporter
