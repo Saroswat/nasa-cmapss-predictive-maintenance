@@ -34,6 +34,25 @@ irm https://raw.githubusercontent.com/Saroswat/nasa-cmapss-predictive-maintenanc
 
 Both setup scripts clone this repository, install [uv](https://docs.astral.sh/uv/) when needed, create an isolated Python environment, install the Python and Node.js dependencies, and download the dataset. The dashboard requires Node.js 22.13 or newer.
 
+To retrain the models, refresh the dashboard data, and launch the web interface as part of setup:
+
+**macOS Terminal**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Saroswat/nasa-cmapss-predictive-maintenance/main/scripts/setup-macos.sh -o /tmp/setup-cmapss.sh
+bash /tmp/setup-cmapss.sh --run-experiment --start-dashboard
+```
+
+**Windows PowerShell**
+
+```powershell
+$setup = Join-Path $env:TEMP "setup-cmapss.ps1"
+Invoke-WebRequest https://raw.githubusercontent.com/Saroswat/nasa-cmapss-predictive-maintenance/main/scripts/setup-windows.ps1 -OutFile $setup
+& $setup -RunExperiment -StartDashboard
+```
+
+Omit `--run-experiment` / `-RunExperiment` for the quick setup using the committed verified dashboard snapshot. Custom repository URLs and install locations are available through `--repository-url`, `--install-directory`, `-RepositoryUrl`, and `-InstallDirectory`.
+
 Run the complete experiment:
 
 ```bash
