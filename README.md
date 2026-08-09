@@ -75,6 +75,16 @@ uv run jupyter lab notebooks/02_portable_end_to_end_cmapss.ipynb
 
 The portable notebook contains its own dependency bootstrap, verified dataset downloader, feature engineering, model selection, evaluation, plots, artifact serialization, and dashboard-data export. It is designed for Apple Silicon, Windows systems with or without NVIDIA GPUs, and the Google Colab free CPU tier.
 
+For the advanced operational decision-support workflow:
+
+[![Open operational notebook in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Saroswat/nasa-cmapss-predictive-maintenance/blob/main/notebooks/03_operational_cmapss_decision_support.ipynb)
+
+```bash
+uv run jupyter lab notebooks/03_operational_cmapss_decision_support.ipynb
+```
+
+This extension adds conformal RUL uncertainty, calibrated maintenance risk, telemetry quality gates, drift and out-of-distribution monitoring, persistent alerts, human-review overrides, capacity-aware work queues, decision logs, model fingerprints, monitoring reports, and an audit-oriented model card. It remains a research prototype and cannot determine aircraft airworthiness.
+
 Launch the fleet dashboard:
 
 ```bash
@@ -91,6 +101,7 @@ Then open [http://localhost:3000](http://localhost:3000). The committed dashboar
 ├── notebooks/
 │   ├── 01_modern_predictive_maintenance.ipynb
 │   ├── 02_portable_end_to_end_cmapss.ipynb
+│   ├── 03_operational_cmapss_decision_support.ipynb
 │   └── archive/                  Original eighth-semester notebook
 ├── tests/                        Fast unit and synthetic end-to-end tests
 ├── scripts/                      Setup scripts and dashboard data exporter
