@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/Saroswat/nasa-cmapss-predictive-maintenance/actions/workflows/ci.yml/badge.svg)](https://github.com/Saroswat/nasa-cmapss-predictive-maintenance/actions/workflows/ci.yml)
 
-![C-MAPSS fleet intelligence](web/public/og.png)
+![AeroPulse engine health intelligence](web/public/og.png)
 
 A reproducible remaining-useful-life (RUL) and cost-aware maintenance workflow for NASA's C-MAPSS FD001 turbofan benchmark. This is a modernized continuation of my B.Tech eighth-semester project.
 

@@ -29,7 +29,7 @@ test("server-renders fleet dashboard metadata and loading state", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>C-MAPSS Fleet Intelligence<\/title>/i);
+  assert.match(html, /<title>AeroPulse \| Engine Health Intelligence<\/title>/i);
   assert.match(html, /Predictive maintenance intelligence for NASA turbofan engine fleets/);
   assert.match(html, /Loading fleet intelligence/);
   assert.doesNotMatch(html, /Starter Project|Your site is taking shape/);

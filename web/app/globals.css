@@ -49,9 +49,10 @@ button:focus-visible, input:focus-visible, tr:focus-visible { outline: 3px solid
 }
 .brand { display: flex; align-items: center; gap: 11px; padding: 0 8px 24px; border-bottom: 1px solid #34413e; }
 .brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #56716b; border-radius: 7px; color: #77c2b7; }
-.brand strong, .brand span { display: block; }
-.brand strong { font-size: 14px; }
-.brand span { margin-top: 2px; color: #aebbb7; font-size: 11px; }
+.brand strong, .brand-subtitle { display: block; }
+.brand strong { font-size: 15px; }
+.brand .brand-accent { display: inline; color: #77c2b7; }
+.brand-subtitle { margin-top: 2px; color: #aebbb7; font-size: 10px; white-space: nowrap; }
 .sidebar nav { display: grid; gap: 5px; margin-top: 20px; }
 .nav-item { width: 100%; height: 42px; display: flex; align-items: center; gap: 11px; padding: 0 12px; border: 0; border-radius: 6px; background: transparent; color: #b7c2bf; text-align: left; }
 .nav-item:hover { background: #25312e; color: #fff; }

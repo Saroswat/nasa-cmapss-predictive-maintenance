@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "C-MAPSS Fleet Intelligence",
+  title: "AeroPulse | Engine Health Intelligence",
   description: "Predictive maintenance intelligence for NASA turbofan engine fleets.",
   openGraph: {
-    title: "C-MAPSS Fleet Intelligence",
+    title: "AeroPulse | Engine Health Intelligence",
     description: "Predictive maintenance intelligence for NASA turbofan engine fleets.",
     images: [{ url: "/og.png", width: 1694, height: 895 }],
   },

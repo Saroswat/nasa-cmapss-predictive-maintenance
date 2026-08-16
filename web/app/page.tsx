@@ -227,8 +227,8 @@ export default function Home() {
         <div className="brand">
           <div className="brand-mark"><Gauge size={20} /></div>
           <div>
-            <strong>C-MAPSS</strong>
-            <span>Fleet Intelligence</span>
+            <strong>AERO<span className="brand-accent">PULSE</span></strong>
+            <span className="brand-subtitle">Engine Health Intelligence</span>
           </div>
         </div>
         <nav aria-label="Dashboard views">
